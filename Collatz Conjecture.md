@@ -104,7 +104,7 @@ print("Collatz sequence for", number, "is:", collatz(number))
 In this modified version, when a number becomes 1 after halving, indicating a power of 2, the tail sequence "4, 2, 1" is directly appended to the sequence, and the loop breaks. This optimization skips unnecessary iterations and enhances the efficiency of the code, especially for larger numbers.
 ```
 **User**
-What if the sequence doesn't exhibit this behaviour?
+What if the sequence doesn't exhibit this behavior?
 **ChatGPT**
 If the Collatz sequence for a particular number doesn't exhibit the tail sequence "4, 2, 1" behavior, then appending the tail sequence prematurely could lead to incorrect results. In that case, we need to ensure that the code still accurately computes the Collatz sequence for all numbers.
 
@@ -171,7 +171,7 @@ Can you write the code in Haskell?
 **ChatGPT**
 Certainly! Here's a Haskell implementation of the Collatz sequence:
 
-``haskell
+```haskell
 Copy code
 collatz :: Integer -> [Integer]
 collatz 1 = [1]
@@ -185,7 +185,7 @@ main = do
     input <- getLine
     let number = read input :: Integer
     putStrLn $ "Collatz sequence for " ++ show number ++ " is: " ++ show (collatz number)
-``
+```
 In this code:
 
 collatz is a recursive function that computes the Collatz sequence for a given positive integer. It uses pattern matching to handle the base case when the input is 1 and applies the Collatz rule recursively for even and odd numbers.
@@ -197,7 +197,7 @@ What about the 4 2 1 tail recursion?
 **ChatGPT**
 To incorporate the tail recursion pattern of "4, 2, 1" in the Haskell implementation, we can modify the collatz function to detect when the sequence reaches 4 and directly append the tail sequence "4, 2, 1". Here's the modified code:
 
-``haskell
+```haskell
 Copy code
 collatz :: Integer -> [Integer]
 collatz 1 = [1]
@@ -212,7 +212,7 @@ main = do
     input <- getLine
     let number = read input :: Integer
     putStrLn $ "Collatz sequence for " ++ show number ++ " is: " ++ show (collatz number)
-``
+```
 In this version, when the number in the sequence becomes 4, we directly return the tail sequence "4, 2, 1". This optimization ensures that the function doesn't continue unnecessary iterations for numbers that exhibit the "4, 2, 1" pattern.
 
 **User**
@@ -220,7 +220,7 @@ Wouldn't it be better to implement memoization technique?
 **ChatGPT**
 Absolutely, memoization can greatly improve the efficiency of the computation, especially for larger numbers. Here's the Haskell code incorporating memoization:
 
-``haskell
+```haskell
 Copy code
 import qualified Data.Map as Map
 
@@ -244,7 +244,7 @@ main = do
     input <- getLine
     let number = read input :: Integer
     putStrLn $ "Collatz sequence for " ++ show number ++ " is: " ++ show (collatz number)
-``
+```
 In this code:
 
 memoCollatz is a helper function that computes the Collatz sequence for a given positive integer while memoizing intermediate results. It uses a Map data structure from the Data.Map module to store computed sequences.
@@ -271,7 +271,7 @@ Traversal: You can traverse the elements of a Map using functions like map, fold
 
 Here's a simple example of using Map:
 
-``haskell
+```haskell
 Copy code
 import qualified Data.Map as Map
 
@@ -294,7 +294,7 @@ main = do
     putStrLn $ "Apple count: " ++ show appleCount
     putStrLn $ "Updated map: " ++ show updatedMap
     putStrLn $ "New map: " ++ show newMap
-``
+```
 In this example, we create a Map called myMap from a list of key-value pairs. We then perform operations like lookup, insertion, and deletion on this map. Finally, we print out the results using the main function.
 
 **User**
@@ -302,7 +302,7 @@ I see, what about the basic version of the collatz code
 **ChatGPT**
 Certainly! Here's a basic version of the Collatz sequence computation in Haskell without memoization:
 
-``haskell
+```haskell
 Copy code
 collatz :: Integer -> [Integer]
 collatz 1 = [1]
@@ -316,7 +316,7 @@ main = do
     input <- getLine
     let number = read input :: Integer
     putStrLn $ "Collatz sequence for " ++ show number ++ " is: " ++ show (collatz number)
-``
+```
 In this code:
 
 The collatz function computes the Collatz sequence for a given positive integer recursively.
@@ -338,7 +338,7 @@ you may want to rewrite the above code
 **ChatGPT**
 Sure! Let's modify the Haskell code to incorporate handling of the "4, 2, 1" tail cycle efficiently:
 
-``haskell
+```haskell
 Copy code
 collatz :: Integer -> [Integer]
 collatz 1 = [1]
@@ -353,7 +353,7 @@ main = do
     input <- getLine
     let number = read input :: Integer
     putStrLn $ "Collatz sequence for " ++ show number ++ " is: " ++ show (collatz number)
-``
+```
 In this modified version:
 
 We've added a specific pattern for when the input is 4, returning the tail sequence "4, 2, 1" directly.
@@ -366,13 +366,13 @@ I'm glad you found it helpful! If you have any more questions or need further as
 
 **User**
 How about this code? 
-``haskell
+```haskell
 next :: Integer -> Integer 
 next k = if even k then div k 2 else 3 * k + 1 
 collatz :: Integer -> [Integer] 
 collatz 4 = [4, 2, 1] 
 collatz n = n : collatz $ next n
-``
+```
 **ChatGPT**
 Your code looks concise and captures the essence of the Collatz sequence computation. Here's a breakdown:
 
@@ -385,7 +385,7 @@ Do you think putting a check for negative numbers feasible?
 **ChatGPT**
 In the context of the Collatz sequence, handling negative numbers might not be meaningful because the sequence is defined for positive integers only. However, if you want to ensure that your function gracefully handles negative inputs, you could add a check to return an empty list or a message indicating that negative inputs are not valid. Here's how you could modify the code to include such a check:
 
-``haskell
+```haskell
 Copy code
 next :: Integer -> Integer 
 next k = if even k then div k 2 else 3 * k + 1 
@@ -395,7 +395,7 @@ collatz n
     | n <= 0    = []  -- Handle negative or zero inputs
     | n == 4    = [4, 2, 1] 
     | otherwise = n : collatz (next n)
-``
+```
 In this modified version:
 
 If the input n is less than or equal to 0, the function returns an empty list, indicating that negative or zero inputs are not valid.
